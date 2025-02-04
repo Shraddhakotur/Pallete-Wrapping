@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Scanner</title>
+    <style>
+       body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #dbd0d0;
+    display: flex;
+    height: 100vh; /* Full viewport height */
+}
+#main-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between layers */
+}
+.layer {
+    text-align: center; /* Center text within each layer */
+}
+
+.container, .container1, .container2 {
+    display: flex;
+    justify-content: space-between;
+    width:15%; /* Full width of the parent container */
+    gap: 0px;
+    margin-left:58px;
+    margin-top: 120px;
+    height:350px;
+    font-style:normal;
+}
+
+/* Main Container */
+.bottomlayer_container {
+    position: relative; /* Make it the reference for absolute positioning */
+    width: 80%; /* Adjust width */
+    margin: auto; /* Center the container */
+    padding-top: 20px; /* Space for the title */
+}
+
+/* BOTTOM LAYER Title */
+.blayer-title {
+    position: absolute;
+    top: 87px;
+    left: 29%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Main Container */
+.middlelayer_container {
+    position: relative; /* Make it the reference for absolute positioning */
+    width: 80%; /* Adjust width */
+    margin: auto; /* Center the container */
+    padding-top: 20px; /* Space for the title */
+}
+
+/* MIDDLE LAYER Title */
+.mlayer-title {
+    position: absolute;
+    top: 87px;
+    left: 53%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+/* Main Container */
+.toplayer_container {
+    position: relative; /* Make it the reference for absolute positioning */
+    width: 80%; /* Adjust width */
+    margin: auto; /* Center the container */
+    padding-top: 20px; /* Space for the title */
+}
+
+/* TOP LAYER Title */
+.tlayer-title {
+    position: absolute;
+    top:87px;
+    left:78%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.column 
+{
+    display: flex;
+     flex-direction: column;
+     margin-left: 0%;
+     margin-top: 0%;
+}
+    .scanbutton {
+    width: 250px;          /* Maintain the desired width */
+    height: 10px;         /* Maintain the desired height */
+    display: flex;         /* Use flexbox to center the content */
+    justify-content: center; /* Horizontally center the content inside */
+    align-items: center;   /* Vertically center the content inside */
+    position: absolute;    /* Use absolute positioning */
+    top: 85%;            /* Vertically center the box */
+    left: 55%;              /* Start from the middle of the page horizontally */
+    transform: translate(-50%, -50%); /* Adjust to exactly center */
+    font-size: 20px;       /* Make the font size larger */   
+    text-align: center;  /* Center the text inside the box */
+}
+
+input[type="text"]
+ {
+    font-size: 12px; /* Larger font size for input text */
+    padding: 12px;   /* Adjust padding to fit the larger input field */
+    width: 100px; 
+    height: 5px;   /* Make the input field take full width of the box */
+    text-align: center;  /* Center the text inside the box */
+
+}
+.greeninput
+{
+    background-color: green;  
+}
+.charcoalinput
+{
+    
+    background-color: #7b3f00;
+
+}  
+.blueinput
+{
+    
+    background-color: blue;
+}
+
+ .box {
+            border: 1px solid black;
+            font-size:25px;
+            padding-left:0px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eaeaea;
+        }
+        .box1 {
+            border: 1px solid #000;
+            font-size:25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eaeaea;
+        }
+          
+        .container1 {
+            display: flex;
+            border: 0px solid #333;
+            padding: 20px;
+            justify-content:space-between;
+            margin:0px;
+       
+        }
+        .column1 {
+            display: flex;
+            flex-direction: column;
+            margin: 0px;
+        }
+        .box2 {
+            border: 1px solid #000;
+            font-size:25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eaeaea;
+        }
+        .box3 {
+            border: 1px solid #000;
+            font-size:25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eaeaea;   
+        }
+
+        .container2 {
+            display: flex;
+            border: 0px solid #333;
+            padding: 30px;
+            justify-content:space-between;
+            margin-left:15px;
+            margin-top:-25px;
+        }
+        .column2 {
+            display: flex;
+            flex-direction: column;
+            margin: 0px;
+        }
+        .box4 {
+            margin:0px ;
+            border: 1px solid black;
+            font-size:25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eaeaea;       
+        }
+        .box5 {
+            margin:0px;
+            border: 1px solid #000;
+            font-size:25px;
+            font-style: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .green {
+      background-color: #109414;
+      width:65px;
+      height: 550px;
+      font-size : 13px;
+    }
+        .charcoal {
+      background-color: #7b3f00;
+      width: 65px;
+      height: 550px;
+      font-size:13px;
+    }
+    .blue {
+      background-color: #0000FF;
+      width: 65px;
+      height: 550px;
+      font-size:13px;
+    } 
+    
+    label {
+            font-weight: bold;
+        }
+        body { 
+            margin-left: 220px; 
+    }  
+    svg {
+    width: 50px;
+    height: 50px;
+}
+
+.boxcount_container {
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center;    /* Center items horizontally within the flex container */
+    gap: 5px;               /* Add spacing between items */
+    position: absolute;     /* Allow precise positioning */
+    left: 35%;              /* Center the container horizontally */
+    width: 100px; 
+    height: 15px;    /* Make the input field take full width of the box */
+    text-align: center;  /* Center the text inside the box */
+    top: 72%;               /* Vertically position the container */
+    transform: translate(-50%, -50%);
+    border: 100px;
+}
+
+.page-heading {
+    text-align: center;         /* Center the heading */
+    font-size: 25px;     /* Adjust the font size */
+    font-weight: bold;          /* Make the text bold */
+    margin-left:500px;       /* Add some space around the heading */
+    color: hsla(315, 70%, 55%, 0.886);                /* Set the text color */
+    position: fixed;            /* Keep the heading at the top */
+    top: -10px;                     /* Align the heading to the top of the page */
+    padding: 3px 0;            /* Add some padding for better spacing */
+    z-index: 1000;              /* Ensure it stays above other elements */
+    margin-left: 440px;
+}
+.page-heading {
+    text-decoration: underline;
+    word-spacing: 20px; /* Adds space between words */
+}
+
+   </style>
+</head>
+
+
+<body>
+    <h1 class="page-heading">PALLETE  WRAPPING</h1>
+    
+    <div class="container" id="main-container">
+        <!-- Move BOTTOM LAYER to the top inside container -->
+        <div id="layer1" class="blayer-title">BOTTOM LAYER</div>
+        <!-- Column 1 -->
+        <div class="column">
+    
+            <div class="box blue" id="box12">Box 12</div>
+            <div class="box blue" id="box11">Box 11</div>
+            <div class="box blue" id="box10">Box 10</div>
+            <div class="box blue" id="box9">Box 9</div>
+            <div class="box charcoal" id="box8">Box 8</div>
+            <div class="box charcoal" id="box7">Box 7</div>
+            <div class="box charcoal" id="box6">Box 6</div>
+            <div class="box charcoal" id="box5">Box 5</div>
+            <div class="box charcoal" id="box4">Box 4</div>
+            <div class="box green" id="box3">Box 3</div>
+            <div class="box green" id="box2">Box 2</div>
+            <div class="box green" id="box1">Box 1</div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="column">
+            <div class="box green" id="box13">Box 13</div>
+            <div class="box green" id="box14">Box 14</div>
+            <div class="box green" id="box15">Box 15</div>
+            <div class="box charcoal" id="box16">Box 16</div>
+            <div class="box charcoal" id="box17">Box 17</div>
+            <div class="box charcoal" id="box18">Box 18</div>
+            <div class="box charcoal" id="box19">Box 19</div>
+            <div class="box charcoal" id="box20">Box 20</div>
+            <div class="box blue" id="box21">Box 21</div>
+            <div class="box blue" id="box22">Box 22</div>
+            <div class="box blue" id="box23">Box 23</div>
+            <div class="box blue" id="box24">Box 24</div>
+        </div>
+        <!-- Column 3 -->
+        <div class="column">
+            <div class="box1 green" id="box28">Box 28</div>
+            <div class="box1 blue" id="box25">Box 25</div>
+        </div>
+        <!-- Column 4 -->
+        <div class="column">
+            <div class="box1 green" id="box29">Box 29</div>
+            <div class="box1 blue" id="box26">Box 26</div>
+        </div>
+        <!-- Column 5 -->
+        <div class="column">
+            <div class="box1 green" id="box30">Box 30</div>
+            <div class="box1 charcoal" id="box27">Box 27</div>
+        </div>
+  
+        
+        <div class="container1" id ="main-container"></div>
+        <div id="layer1" class="mlayer-title">MIDDLE LAYER</div>
+          <!-- Column 6 -->
+          <div class="column">
+                <div class="box2 charcoal" id="box42">Box 42</div>
+                    <div class="box2 charcoal" id="box41">Box 41</div>
+                    <div class="box2 charcoal" id="box40">Box 40</div>
+                    <div class="box2 charcoal" id="box39">Box 39</div>
+                    <div class="box2 charcoal" id="box38">Box 38</div>
+                    <div class="box2 charcoal" id="box37">Box 37</div>
+                    <div class="box2 blue" id="box36">Box 36</div>
+                    <div class="box2 blue" id="box35">Box 35</div>
+                    <div class="box2 blue" id="box34">Box 34</div>
+                    <div class="box2 blue"id="box33">Box 33</div>
+                    <div class="box2 blue"id="box32">Box 32</div>
+                    <div class="box2 blue"id="box31">Box 31</div>
+                </div>
+                <!-- Column 7 -->
+        <div class="column">
+            <div class="box2 blue"id="box43">Box 43</div>
+            <div class="box2 blue" id="box44">Box 44</div>
+            <div class="box2 blue" id="box45">Box 45</div>
+            <div class="box2 blue" id="box46">Box 46</div>
+            <div class="box2 blue" id="box47">Box 47</div>
+            <div class="box2 blue" id="box48">Box 48</div>
+            <div class="box2 charcoal" id="box49">Box 49</div>
+            <div class="box2 charcoal" id="box50">Box 50</div>
+            <div class="box2 charcoal" id="box51">Box 51</div>
+            <div class="box2 charcoal" id="box52">Box 52</div>
+            <div class="box2 charcoal" id="box53">Box 53</div>
+            <div class="box2 charcoal" id="box54">Box 54</div>
+        </div>
+        <!-- Column 8 -->
+        <div class="column">
+            <div class="box3 blue"id="box58">Box 58</div>
+            <div class="box3 charcoal" id="box55">Box 55</div>
+        </div>
+        <!-- Column 9 -->
+        <div class="column">
+            <div class="box3 blue" id="box59">Box 59</div>
+            <div class="box3 charcoal" id="box56">Box 56</div>
+        </div>
+        <!-- Column 10 -->
+        <div class="column">
+            <div class="box3 blue" id="box60">Box 60</div>
+            <div class="box3 green" id="box57">Box 57</div>
+        </div>
+
+        <div class="container2"  id ="main-container">
+            <div id="layer1" class="tlayer-title">TOP LAYER</div>
+        <!-- Column 11-->
+        <div class="column">
+            <div class="box4 green" id="box72">Box 72</div>
+                <div class="box4 green" id="box71">Box 71</div>
+                <div class="box4 green" id="box70">Box 70</div>
+                <div class="box4 green" id="box69">Box 69</div>
+                <div class="box4 green"id="box68">Box 68</div>
+                <div class="box4 blue"id="box67">Box 67</div>
+                <div class="box4 blue" id="box66">Box 66</div>
+                <div class="box4 charcoal" id="box65">Box 65</div>
+                <div class="box4 charcoal" id="box64">Box 64</div>
+                <div class="box4 charcoal"id="box63">Box 63</div>
+                <div class="box4 charcoal" id="box62">Box 62</div>
+                <div class="box4 charcoal"id="box61">Box 61</div>
+                
+            </div>
+            <!-- Column 12 --->
+    <div class="column">
+        <div class="box4 charcoal" id="box73">Box 73</div>
+        <div class="box4 charcoal" id="box74">Box 74</div>
+        <div class="box4 charcoal" id="box75">Box 75</div>
+        <div class="box4 charcoal" id="box76">Box 76</div>
+        <div class="box4 charcoal" id="box77">Box 77</div>
+        <div class="box4 blue" id="box78">Box 78</div>
+        <div class="box4 blue" id="box79">Box 79</div>
+        <div class="box4 green" id="box80">Box 80</div>
+        <div class="box4 green" id= "box81">Box 80</div>
+        <div class="box4 green"id="box82">Box 82</div>
+        <div class="box4 green"  id="box83">Box 83</div>
+        <div class="box4 green" id="box84">Box 84</div>
+    </div>
+    <!-- Column  13-->
+    <div class="column">
+        <div class="box5 charcoal" id="box88">Box 88</div>
+        <div class="box5 green"id="box85">Box 85</div>
+    </div>
+    <!-- Column 14-->
+    <div class="column">
+        <div class="box5 charcoal" id="box89">Box 89</div>
+        <div class="box5 green" id="box86">Box 86</div>
+    </div>
+
+    <!-- Column 15-->
+    <div class="column">
+        <div class="box5 charcoal" id="box90">Box 90</div>
+        <div class="box5 blue" id="box87">Box 87</div>
+    </div>
+
+    <svg style="color: white"></svg>
+
+    <div class="boxcount_container">
+        <label for="boxcount" class="boxcount-label">BoxCount</label>
+
+        <!-- Green Count -->
+        <div  class="greeninput" id="greenBox">  
+        Green<input  type="text" id="greenCount" value="0"  readonly>
+        </div>
+
+        <svg style="color: white"></svg>
+    
+        <!-- Charcoal Count -->
+        <div class="charcoalinput"  id="charcoalBox">
+            Charcoal <input type="text" id="charcoalCount" value="0" readonly>
+        </div>
+    
+        <svg style="color: white"></svg>
+
+        <!-- Blue Count -->
+        <div class="blueinput" id="blueBox">
+            Blue<input type="text" id="blueCount" value="0" readonly>
+        </div>
+    </div>
+    
+    <svg style="color: white"></svg>
+      
+    <div class="scanbutton" id="scanButton" style="display: flex; flex-direction: column; gap: 20px;">
+        <label for="scanbutton">Scan Box</label>
+        <input id="barcodeInput" type="text" placeholder="Scan Barcode" oninput="scanBarcode()" />
+        <svg style="color: white"></svg>
+        <label for="palletCount">Pallete  Count</label>
+        <input type="text" id="palletCount" readonly>
+    </div>
+
+            
+     <script>
+
+
+           // Retrieve the saved pallet count from localStorage, or initialize to 0
+           let palletCount = parseInt(localStorage.getItem("palletCount")) || 0;
+
+            // Update the display for the pallet count
+           document.getElementById("palletCount").value = palletCount;
+
+
+        // Predefined barcodes for valid colors
+        const colorBarcodes = {
+            "green": "744790323146",
+            "charcoal": "X0010JQVWJ",
+            "blue": "BARCODE",
+        }
+
+        let count=1;
+
+        function scanBarcode() {
+        const input = document.getElementById("barcodeInput");
+        const scannedBarcode = input.value.trim(); // Get the entered barcode
+ 
+
+         // Check if the barcode matches any valid color
+            const colorName = Object.keys(colorBarcodes).find(color => colorBarcodes[color] === scannedBarcode);
+
+           // If a valid barcode is found for a color
+            if (colorName) {
+            console.log("Valid Barcode");
+
+           
+           // Based on the count, set the respective box text to "OK"
+        if (count === 1 && colorName === "green") 
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box1").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        } 
+        else if (count === 2 && colorName === "green")
+         {
+            console.log("Valid Barcode");
+            document.getElementById("box2").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+        else if (count === 3 && colorName === "green")
+         {
+            console.log("Valid Barcode");
+            document.getElementById("box3").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        } 
+        else if (count === 4 && colorName === "charcoal")
+         {
+            console.log("Valid Barcode");
+            document.getElementById("box4").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        } 
+        else if (count === 5 && colorName === "charcoal")
+         {
+            console.log("Valid Barcode");
+            document.getElementById("box5").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+        else if(count === 6 && colorName === "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box6").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count === 7 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box7").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 8 && colorName === "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box8").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+         else if (count === 9 && colorName  === "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box9").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count === 10 && colorName  === "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box10").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count === 11 && colorName  === "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box11").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+
+            else  if(count === 12 && colorName ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box12").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  === 13 && colorName  ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box13").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 14 && colorName  === "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box14").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 15 && colorName  === "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box15").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 16 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box16").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        
+            else if (count  === 17 && colorName ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box17").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count ===  18 && colorName  === "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box18").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 19 && colorName  === "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box19").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+
+            else  if(count  === 20 && colorName  === "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box20").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  === 21 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box21").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 22 && colorName  === "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box22").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count === 23 && colorName ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box23").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 24 && colorName  === "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box24").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+         else if (count  === 25 && colorName  === "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box25").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count === 26 && colorName === "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box26").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 27 && colorName  === "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box27").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+
+            else  if(count  === 28 && colorName  ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box28").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  === 29 && colorName  === "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box29").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 30 && colorName  ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box30").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 31 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box31").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 32 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box32").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if (count  === 33 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box33").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  === 34 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box34").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 35 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box35").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+
+            else  if(count  === 36 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box36").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  === 37 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box37").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 38 && colorName  ==  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box38").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 39 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box39").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  ===  40 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box40").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+         else if (count  === 41 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box41").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  === 42 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box42").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 43 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box43").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+
+            else  if(count  === 44 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box44").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  ===  45 && colorName  === "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box45").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  ===  46 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box46").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 47 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box47").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  ===  48 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box48").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        
+            else if (count  ===  49 && colorName   ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box49").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  === 50 && colorName   ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box50").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 51  && colorName  === "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box51").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+
+            else  if(count  ===  52 && colorName  === "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box52").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  === 53 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box53").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 54 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box54").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count   ===  55 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box55").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 56 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box56").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+         else if (count  ===  57 && colorName  ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box57").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  ===  58 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box58").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  ===  59 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box59").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+
+            else  if(count  ===  60 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box60").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  === 61 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box61").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  ===  62 && colorName  ===   "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box62").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count   ===  63 && colorName   ===   "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box63").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  ===  64 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box64").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count   ===  65 && colorName   ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box65").innerText ="OK";
+            updateCount(colorName); 
+            count++;  
+        }
+        else if(count  ===  66 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box66").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count   ===  67 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box67").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count   ===  68 && colorName   ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box68").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        
+            else if (count  ===  69 && colorName  ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box69").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  === 70 && colorName ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box70").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 71&& colorName  ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box71").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+
+            else  if(count  === 72 && colorName  ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box72").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  === 73 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box73").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  ===  74 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box74").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 75 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box75").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  ===  76 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box76").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+         else if (count  ===  77 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box77").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count  ===  78 && colorName ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box78").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count   === 79 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box79").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+
+            else  if(count  ===  80 && colorName  ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box80").innerText = "OK";
+            updateCount(colorName);
+            count++;
+        }
+            else if(count   === 81 && colorName  ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box81").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  ===  82 && colorName  ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box82").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 83 && colorName   ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box83").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count   ===  84 && colorName  ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box84").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 85 && colorName  ===   "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box85").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  ===  86 && colorName  ===  "green")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box86").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 87 && colorName  ===  "blue")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box87").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count   === 88 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box88").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  === 89 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box89").innerText ="OK";
+            updateCount(colorName);
+            count++;  
+        }
+        else if(count  ===  90 && colorName  ===  "charcoal")
+        {
+            console.log("Valid Barcode");
+            document.getElementById("box90").innerText ="OK";
+            updateCount(colorName);
+            for (let i = 1; i <= 90; i++) 
+            document.getElementById(`box${i}`).innerText = `Box ${i}`;
+            palletCount++;
+            document.getElementById("palletCount").value = palletCount; // Update textbox
+            localStorage.setItem("palletCount", palletCount);
+            totalScanned = 0; // Reset scanned count
+            count = 0;        // Reset box count
+            speakMessage("Pallet Count Completed");
+        }
+        else
+        {
+            console.log("Invalid colour");
+            speakMessage("Invalid colour");     
+    }
+    if (count > 90) {
+            setTimeout(() => {
+                count = 1; // Reset count to start from Box 1
+                resetBoxes(); // Reset all box labels
+            }, 5000); // Delay before reset (5 second after finishing the last box)
+        }
+
+        setTimeout(() => {
+            input.value = ""; // Clear input
+        }, 500); // Clear input after 500 milliseconds
+    }
+
+            function updateCount(colorName) {
+               const countElement = document.getElementById(`${colorName}Count`);
+               countElement.value = parseInt(countElement.value) + 1;  // Increment the count
+}
+         function speakMessage(message) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(message);
+            synth.speak(utterance);
+           }       
+    }  
+
+</script>
+
+
